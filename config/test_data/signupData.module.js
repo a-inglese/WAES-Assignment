@@ -49,7 +49,7 @@ module.exports = {
             monthOfBirth: 'January',
             yearOfBirth: '2000',
         },
-        'Invalid birth date': {
+        'invalid birth date': {
             username: 'notbornyet',
             password: 'drowssap', 
             name: 'Not Yet', 
