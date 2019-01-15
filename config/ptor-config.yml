@@ -1,7 +1,7 @@
 browser:
   directConnect: true
   seleniumAddress: false
-  seleniumServerJarPath: 'node_modules/webdriver-manager/selenium/selenium-server-standalone-2.*.jar'
+  seleniumServerJarPath: 'node_modules/webdriver-manager/selenium/selenium-server-standalone-3.*.jar'
   chromeDriverPath: "node_modules/webdriver-manager/selenium/chromedriver_2.*"
   firefoxPath:
   width: 1440

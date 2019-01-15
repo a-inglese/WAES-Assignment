@@ -216,7 +216,7 @@ exports.config = {
   jasmineNodeOpts: {
     print: function () {},
     showColors: true,
-    defaultTimeoutInterval: 200000,
+    defaultTimeoutInterval: ptorYml.timeouts.defaultTimeoutInterval,
     isVerbose: true
   },
 
