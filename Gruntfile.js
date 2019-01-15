@@ -41,6 +41,15 @@ module.exports = function(grunt) {
           }
         }
       },
+      logout: {
+        options: {
+          configFile: "conf.js",
+          directConnect: true,
+          args: {
+            suite: "logout",
+          }
+        }
+      },
       signup: {
         options: {
           configFile: "conf.js",
@@ -91,12 +100,18 @@ module.exports = function(grunt) {
    grunt.task.run(['protractor:elements']);
   });
 
+  grunt.registerTask('login', function (env) {
+    grunt.task.run(['protractor:login']);
+   });
+
+   grunt.registerTask('logout', function (env) {
+    grunt.task.run(['protractor:logout']);
+   });
+
   grunt.registerTask('signup', function (env) {
     grunt.task.run(['protractor:signup']);
    });
 
-   grunt.registerTask('login', function (env) {
-    grunt.task.run(['protractor:login']);
-   });
+
 
 };

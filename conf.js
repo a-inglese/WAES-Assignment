@@ -79,7 +79,8 @@ exports.config = {
   suites: {
     all: 'specs/*.js',
     login: 'specs/loginSpec.js',
-    signup: 'specs/signupSpec.js',
+    logout: 'specs/logoutSpec.js',
+    signup: 'specs/signUpSpec.js',
     elements: 'specs/elementsSpec.js'
   },
 

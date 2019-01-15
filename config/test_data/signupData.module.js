@@ -1,8 +1,16 @@
 'use strict';
 
 module.exports = {
-    signupData: {
-        'Correct User': {username: 'admin', password: 'hero', name: 'Amazing Admin', mail: 'a.admin@wearewaes.com', superpower: 'Change the course of a waterfall'},
+    userData: {
+        'User 1': {
+            username: 'ainglese',
+            password: 'passw0rd', 
+            name: 'Agustin Inglese', 
+            email: 'agustin.inglese@gmail.com', 
+            dayOfBirth: '15',
+            monthOfBirth: '10',
+            yearOfBirth: '1986',
+        },
     }
 }
 

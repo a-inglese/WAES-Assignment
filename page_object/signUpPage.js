@@ -1,4 +1,5 @@
-function SignupPage (params) {
+function SignUpPage () {
+  this.url = 'https://waesworks.bitbucket.io/app/signUp';
   this.usernameInput = element(by.id('username_input'))
   this.passwordInput = element(by.id('password_input'));
   this.nameInput = element(by.id('name_input'));
@@ -6,67 +7,70 @@ function SignupPage (params) {
   this.dayInput = element(by.id('day_select'));
   this.monthInput = element(by.id('month_select'));
   this.yearInput = element(by.id('year_select'));
+  this.submitButton = element(by.id('submit_button'));
 
 
   // GETTERS //
 
-  SignupPage.prototype.getHeader = function(){
-      return this.header;
+  SignUpPage.prototype.getUsernameInput = function(){
+      return this.usernameInput;
   };
 
-  SignupPage.prototype.getHomeLink = function(){
-      return this.homeLink;
+  SignUpPage.prototype.getPasswordInput = function(){
+      return this.passwordInput;
   };
 
-  SignupPage.prototype.getLoginLink = function(){
-      return this.loginLink;
+  SignUpPage.prototype.getNameInput = function(){
+      return this.nameInput;
   };
 
-  SignupPage.prototype.getSignupLink = function(){
-      return this.signupLink;
+  SignUpPage.prototype.getEmailInput = function(){
+      return this.emailInput;
   };
 
-  SignupPage.prototype.getDetailsLink = function(){
-      return this.detailsLink;
+  SignUpPage.prototype.getDayInput = function(){
+      return this.dayInput;
   };
 
-  SignupPage.prototype.getProfileLink = function(){
-      return this.profileLink;
+  SignUpPage.prototype.getMonthInput = function(){
+      return this.monthInput;
   };
 
-  SignupPage.prototype.getStatusMessage = function(){
-      return this.statusMessage;
+  SignUpPage.prototype.getYearInput = function(){
+      return this.yearInput;
   };
 
-  SignupPage.prototype.goToHomePage = function(){
-      return this.getHomeLink().click();
+  SignUpPage.prototype.getSubmitButton = function(){
+    return this.submitButton;
   };
 
-  SignupPage.prototype.goToLoginPage = function(){
-      return this.getLoginLink().click();
+  // SETTERS //
+
+  SignUpPage.prototype.setUsername = function(username) {
+    this.getUsernameInput().click();
+    this.getUsernameInput().sendKeys(username);
   };
 
-  SignupPage.prototype.goToSignupPage = function(){
-      return this.getSignupLink().click();
+  SignUpPage.prototype.setPassword = function(password) {
+    this.getPasswordInput().click();
+    this.getPasswordInput().sendKeys(password);
   };
 
-  SignupPage.prototype.goToDetailsPage = function(){
-      return this.getDetailsLink().click();
+  SignUpPage.prototype.setName = function(name) {
+    this.getNameInput().click();
+    this.getNameInput().sendKeys(name);
   };
 
-  SignupPage.prototype.goToProfilePage = function(){
-      return this.getProfileLink().click();
+  SignUpPage.prototype.setEmail = function(email) {
+    this.getEmailInput().click();
+    this.getEmailInput().sendKeys(email);
   };
 
-  SignupPage.prototype.signOut = function(){
-      return this.getSignupLink().click();
-  };
-
-  SignupPage.prototype.closeMapModal = function(){
-      return this.getMapModalCloseButton().click();
+  SignUpPage.prototype.submit = function(email) {
+    this.getSubmitButton().click();
   };
 
 
 }
 
-module.exports = SignupPage;
+module.exports = SignUpPage;
