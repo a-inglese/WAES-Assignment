@@ -12,6 +12,10 @@ function SignUpPage () {
 
   // GETTERS //
 
+  SignUpPage.prototype.getUrl = function(){
+    return this.url;
+  };
+
   SignUpPage.prototype.getUsernameInput = function(){
       return this.usernameInput;
   };
@@ -66,7 +70,22 @@ function SignUpPage () {
     this.getEmailInput().sendKeys(email);
   };
 
-  SignUpPage.prototype.submit = function(email) {
+  SignUpPage.prototype.setDayOfBirth = function(dayOfBirth) {
+    this.getDayInput().click();
+    element.all((by.cssContainingText('option', dayOfBirth))).first().click()
+  };
+
+  SignUpPage.prototype.setMonthOfBirth = function(MonthOfBirth) {
+    this.getMonthInput().click();
+    element.all((by.cssContainingText('option', MonthOfBirth))).first().click()
+  };
+
+  SignUpPage.prototype.setYearOfBirth = function(YearOfBirth) {
+    this.getYearInput().click();
+    element.all((by.cssContainingText('option', YearOfBirth))).first().click()
+  };
+
+  SignUpPage.prototype.submit = function() {
     this.getSubmitButton().click();
   };
 
