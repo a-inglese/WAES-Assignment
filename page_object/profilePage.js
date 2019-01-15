@@ -1,5 +1,5 @@
 function ProfilePage () {
-  this.url = 'profile';
+  this.url = 'https://waesworks.bitbucket.io/app/profile';
   this.title = 'Your Profile';
 
 

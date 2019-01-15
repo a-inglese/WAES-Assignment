@@ -1,10 +1,15 @@
 function LoginPage () {
+  this.url = 'https://waesworks.bitbucket.io/app/login';
   this.usernameInput = element(by.id('username_input'));
   this.passwordInput = element(by.id('password_input'));
   this.loginButton = element(by.id('login_button'));
 
 
   // GETTERS //
+
+  LoginPage.prototype.getUrl = function(){
+    return this.url;
+  };
 
   LoginPage.prototype.getUsernameInput = function(){
       return this.usernameInput;

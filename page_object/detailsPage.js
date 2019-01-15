@@ -2,7 +2,7 @@ function DetailsPage () {
   this.titleContainer = $('.view-module--view--3wzVy').$('h1');
   this.nameContainer = $('.view-module--view--3wzVy').$('ul').$$('li').first();
   this.mailContainer = $('.view-module--view--3wzVy').$('ul').$$('li').last();
-  this.url = 'detail';
+  this.url = 'https://waesworks.bitbucket.io/app/details';
   this.title = 'Your Details';
 
 
