@@ -2,7 +2,7 @@ var commheadel = require('../page_object/commonHeaderElements'),
     homePage = require('../page_object/homePage'),
     loginPage = require('../page_object/loginPage');
 
-describe("As a User, I want to check WAES Log Out Process", function() {
+describe("As a User, I want to Log Out from WAES website", function() {
 
     beforeAll(function () {
         // Ignores synchronization with angular for non-angular page,
@@ -42,13 +42,12 @@ describe("As a User, I want to check WAES Log Out Process", function() {
 
 
             it("When I click on Logout link", function() {
-                self = this;
                 this.CommonHeaderElements.logOut()        
             });
 
             it("Then I should be correctly redirected to Login page", function() {
                 // Check for correct redirection in URL
-                expect(browser.getCurrentUrl()).toContain(this.LoginPage.getUrl());                  
+                expect(browser.getCurrentUrl()).toBe(this.LoginPage.getUrl());                  
             });
 
             it("And Status Message prompting to log in should be displayed", function() {
