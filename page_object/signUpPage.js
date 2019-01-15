@@ -51,40 +51,25 @@ function SignUpPage () {
   // SETTERS //
 
   SignUpPage.prototype.setUsername = function(username) {
-    this.getUsernameInput().click();
     this.getUsernameInput().sendKeys(username);
   };
 
   SignUpPage.prototype.setPassword = function(password) {
-    this.getPasswordInput().click();
     this.getPasswordInput().sendKeys(password);
   };
 
   SignUpPage.prototype.setName = function(name) {
-    this.getNameInput().click();
     this.getNameInput().sendKeys(name);
   };
 
   SignUpPage.prototype.setEmail = function(email) {
-    this.getEmailInput().click();
     this.getEmailInput().sendKeys(email);
   };
 
-  SignUpPage.prototype.setDayOfBirth = function(dayOfBirth) {
-    this.getDayInput().click();
-    element.all((by.cssContainingText('option', dayOfBirth))).first().click()
+  SignUpPage.prototype.setDate = function(cssText) {
+    element.all((by.cssContainingText('option', cssText))).first().click()
   };
-
-  SignUpPage.prototype.setMonthOfBirth = function(MonthOfBirth) {
-    this.getMonthInput().click();
-    element.all((by.cssContainingText('option', MonthOfBirth))).first().click()
-  };
-
-  SignUpPage.prototype.setYearOfBirth = function(YearOfBirth) {
-    this.getYearInput().click();
-    element.all((by.cssContainingText('option', YearOfBirth))).first().click()
-  };
-
+  
   SignUpPage.prototype.submit = function() {
     this.getSubmitButton().click();
   };
