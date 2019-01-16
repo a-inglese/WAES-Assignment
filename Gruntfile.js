@@ -59,6 +59,15 @@ module.exports = function(grunt) {
           }
         }
       },
+      all_tests: {
+        options: {
+          configFile: "conf.js",
+          directConnect: true,
+          args: {
+            suite: "all",
+          }
+        }
+      },
 
     },
 
@@ -110,6 +119,10 @@ module.exports = function(grunt) {
 
   grunt.registerTask('signup', function (env) {
     grunt.task.run(['protractor:signup']);
+   });
+
+   grunt.registerTask('all_tests', function (env) {
+    grunt.task.run(['protractor:all_tests']);
    });
 
 
