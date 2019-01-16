@@ -1,5 +1,8 @@
 function SignUpPage () {
   this.url = 'https://waesworks.bitbucket.io/app/signUp';
+  this.title = 'Sign Up';
+
+  this.titleElement = $('.view-module--view--3wzVy').$('h1')
   this.usernameInput = element(by.id('username_input'))
   this.passwordInput = element(by.id('password_input'));
   this.nameInput = element(by.id('name_input'));
@@ -14,6 +17,14 @@ function SignUpPage () {
 
   SignUpPage.prototype.getUrl = function(){
     return this.url;
+  };
+
+  SignUpPage.prototype.getTitle = function(){
+    return this.title;
+  };
+
+  SignUpPage.prototype.getTitleElement = function(){
+    return this.titleElement;
   };
 
   SignUpPage.prototype.getUsernameInput = function(){

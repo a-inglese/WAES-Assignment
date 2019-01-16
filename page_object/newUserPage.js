@@ -1,8 +1,8 @@
 function NewUserPage () {
     this.url = 'https://waesworks.bitbucket.io/app/newUser';
     this.title = 'Your Profile';
-    this.titleContainer = $('.view-module--view--3wzVy').$('h1');
-    this.welcomeMessageContainer = $('.view-module--view--3wzVy').$('p')
+    this.titleElement = $('.view-module--view--3wzVy').$('h1');
+    this.welcomeMessageElement = $('.view-module--view--3wzVy').$('p')
   
   
     // GETTERS //
@@ -15,12 +15,12 @@ function NewUserPage () {
         return this.title;
     };
 
-    NewUserPage.prototype.getTitleContainer = function(){
-        return this.titleContainer;
+    NewUserPage.prototype.getTitleElement = function(){
+        return this.titleElement;
     };
 
-    NewUserPage.prototype.getWelcomeMessageContainer = function(){
-        return this.welcomeMessageContainer;
+    NewUserPage.prototype.getWelcomeMessageElement = function(){
+        return this.welcomeMessageElement;
     };
   
   }

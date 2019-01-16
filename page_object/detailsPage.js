@@ -28,10 +28,6 @@ function DetailsPage () {
       return this.title;
   };
 
-  DetailsPage.prototype.getContainerText = function(container) {
-    return container.getText();
-  };
-
 }
 
 module.exports = DetailsPage;

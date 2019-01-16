@@ -4,6 +4,7 @@ var commheadel = require('../page_object/commonHeaderElements'),
     newUserPage = require('../page_object/newUserPage'),
     signupData = require('../config/test_data/signupData.module.js'),
     pageObjectHelper = require('../helpers/pageObjectHelper'),
+    navigationHelper = require('../helpers/navigationHelper'),
     using = require('jasmine-data-provider');
 
 describe("As a User, I want to sign up to WAES website", function() {
@@ -12,6 +13,10 @@ describe("As a User, I want to sign up to WAES website", function() {
         // Ignores synchronization with angular for non-angular pages,
         isAngularSite(false);
         this.HomePage = new homePage();
+        this.CommonHeaderElements = new commheadel();
+        this.SignupPage = new signUpPage();
+        this.PageObjectHelper = new pageObjectHelper();
+        this.NavigationHelper = new navigationHelper();
         browser.get(this.HomePage.getUrl());
     });
    
@@ -19,27 +24,22 @@ describe("As a User, I want to sign up to WAES website", function() {
     describe('Signup with correct information', function() {
 
         beforeEach(function() {
-            this.CommonHeaderElements = new commheadel();
-            this.SignupPage = new signUpPage();
             this.NewUserPage = new newUserPage();
-            this.PageObjectHelper = new pageObjectHelper();
         });
 
         // Jasmine Data Provider for multiple test data
+        // It executes all tests for each dataset
         using(signupData.correctUserData, function(data, description) {
 
             it("Given I navigate to Signup page with user with " + description, function() {
                 var self = this,
-                signupLink = this.CommonHeaderElements.getSignupLink(),
-                until = protractor.ExpectedConditions;
-
-                browser.wait(until.presenceOf(signupLink), 30000, 'Signup Link not present. Are you on the correct page?');
+                signupLink = this.CommonHeaderElements.getSignupLink();
+                this.NavigationHelper.waitForElement(signupLink, 'Signup Link not present. Are you on the correct page?')
 
                 this.CommonHeaderElements.goToSignupPage().then(function(){
                     var userInput = self.SignupPage.getUsernameInput();
-                    var until = protractor.ExpectedConditions;
                     // Check for presence of Username Input. In which case we are in Login page
-                    browser.wait(until.presenceOf(userInput), 30000, 'User Input not present. Are you on the correct page?');
+                    self.NavigationHelper.waitForElement(userInput, 'User Input not present. Are you on the correct page?')
                 });
             });
 
@@ -76,17 +76,20 @@ describe("As a User, I want to sign up to WAES website", function() {
             });
 
             it("Then I should get redirected to new user page", function (){
-                // Check for correct redirection in URL
+                // Wait for element text and check for correct redirection in URL
+                browser.sleep(500)
+                let welcomeMessage = this.NewUserPage.getWelcomeMessageElement();
+                this.NavigationHelper.waitForElement(welcomeMessage, 'Welcome Message not present. Are you on the correct page?');
                 expect(browser.getCurrentUrl()).toContain(this.NewUserPage.getUrl());
             });
 
             it("And I should see the correct page title", function (){
-                var titleDisplayed = this.PageObjectHelper.getContainerText(this.NewUserPage.getTitleContainer());
+                var titleDisplayed = this.PageObjectHelper.getElementText(this.NewUserPage.getTitleElement());
                 expect(titleDisplayed).toBe(this.NewUserPage.getTitle());
             });
 
             it("And I should see the welcome message - Welcome to your new profile page,  " + data.name + "!", function (){
-                var welcomeMessageText = this.PageObjectHelper.getContainerText(this.NewUserPage.getWelcomeMessageContainer());
+                var welcomeMessageText = this.PageObjectHelper.getElementText(this.NewUserPage.getWelcomeMessageElement());
                 expect(welcomeMessageText).toBe('Welcome to your new profile page, ' + data.name + "!");
                 this.CommonHeaderElements.logOut() 
             });
@@ -99,16 +102,9 @@ describe("As a User, I want to sign up to WAES website", function() {
 
         beforeAll(function () {
             // Ignores synchronization with angular for non-angular pages,
-            isAngularSite(false);
-            this.HomePage = new homePage();
+            //isAngularSite(false);
+            //this.HomePage = new homePage();
             browser.get(this.HomePage.getUrl());
-        });
-
-        beforeEach(function() {
-            this.CommonHeaderElements = new commheadel();
-            this.SignupPage = new signUpPage();
-            this.NewUserPage = new newUserPage();
-            this.PageObjectHelper = new pageObjectHelper();
         });
 
         // Jasmine Data Provider for multiple test data
@@ -116,16 +112,14 @@ describe("As a User, I want to sign up to WAES website", function() {
 
             it("Given I navigate to Signup page with user with " + description, function() {
                 var self = this,
-                signupLink = this.CommonHeaderElements.getSignupLink(),
-                until = protractor.ExpectedConditions;
+                signupLink = this.CommonHeaderElements.getSignupLink();
 
-                browser.wait(until.presenceOf(signupLink), 30000, 'Signup Link not present. Are you on the correct page?');
+                this.NavigationHelper.waitForElement(signupLink, 'Signup Link not present. Are you on the correct page?');
 
                 this.CommonHeaderElements.goToSignupPage().then(function(){
                     var userInput = self.SignupPage.getUsernameInput();
-                    var until = protractor.ExpectedConditions;
                     // Check for presence of Username Input. In which case we are in Login page
-                    browser.wait(until.presenceOf(userInput), 30000, 'User Input not present. Are you on the correct page?');
+                    self.NavigationHelper.waitForElement(userInput, 'User Input not present. Are you on the correct page?');
                 });
             });
 
@@ -145,9 +139,7 @@ describe("As a User, I want to sign up to WAES website", function() {
 
             it("Then I should stay on the SignUp page", function (){
                 // Check that current URL is 'https://waesworks.bitbucket.io/app/signUp'
-                // Check that current URL is NOT 'https://waesworks.bitbucket.io/app/newUser'
-                expect(browser.getCurrentUrl()).toBe(this.SignupPage.getUrl());
-                expect(browser.getCurrentUrl()).not.toBe(this.NewUserPage.getUrl());
+                expect(browser.getCurrentUrl()).toBe(this.SignupPage.getUrl(), "ERROR => I SHOULDN'T BE ABLE TO SIGNUP WITH " + description.toUpperCase());
                 
                 // Return to homepage
                 browser.get(this.HomePage.getUrl())
