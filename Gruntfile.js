@@ -5,7 +5,7 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON('package.json'),
 
     jshint: {
-      files: ['Gruntfile.js', 'specs/*.js'],
+      files: ['Gruntfile.js', 'frontend/specs/*.js'],
       options: {
         // options here to override JSHint defaults
         globals: {
@@ -18,32 +18,32 @@ module.exports = function(grunt) {
     },
     protractor: {
       options: {
-        configFile: "conf.js",
+        configFile: "frontend/conf.js",
         directConnect: true
       },
 
       // *** DESKTOP TASKS *** //
       elements: {
         options: {
-          configFile: "conf.js",
+          configFile: "frontend/conf.js",
           directConnect: true,
           args: {
-            suite: "elements",
+            suite: "frontend/conf.js",
           }
         }
       },
       login: {
         options: {
-          configFile: "conf.js",
+          configFile: "frontend/conf.js",
           directConnect: true,
           args: {
-            suite: "login",
+            suite: "frontend/conf.js",
           }
         }
       },
       logout: {
         options: {
-          configFile: "conf.js",
+          configFile: "frontend/conf.js",
           directConnect: true,
           args: {
             suite: "logout",
@@ -52,7 +52,7 @@ module.exports = function(grunt) {
       },
       signup: {
         options: {
-          configFile: "conf.js",
+          configFile: "frontend/conf.js",
           directConnect: true,
           args: {
             suite: "signup",
@@ -61,7 +61,7 @@ module.exports = function(grunt) {
       },
       all_tests: {
         options: {
-          configFile: "conf.js",
+          configFile: "frontend/conf.js",
           directConnect: true,
           args: {
             suite: "all",

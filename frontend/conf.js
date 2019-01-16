@@ -1,7 +1,7 @@
 var glob = require("glob"), // path-finder
   //failFast = require('protractor-fail-fast'), // fail all tests at first fail
   yamlLoader = require('./helpers/yaml-loader'), // yaml loader
-  ptorYml = new yamlLoader('config/ptor-config.yml'); // protractor test conf.
+  ptorYml = new yamlLoader('frontend/config/ptor-config.yml'); // protractor test conf.
 
 exports.config = {
   // ---------------------------------------------------------------------------
