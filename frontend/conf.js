@@ -1,5 +1,7 @@
 var glob = require("glob"), // path-finder
-  //failFast = require('protractor-fail-fast'), // fail all tests at first fail
+  path = require('path'),
+  failFast = require('protractor-fail-fast'), // fail all tests at first fail
+  HtmlReporter = require('jasmine-pretty-html-reporter').Reporter,
   yamlLoader = require('./helpers/yaml-loader'), // yaml loader
   ptorYml = new yamlLoader('frontend/config/ptor-config.yml'); // protractor test conf.
 
@@ -121,8 +123,22 @@ exports.config = {
     };    
 
     // set jasmine reporters
-    
-    // add jasmine spec reporter
+    // Add a screenshot reporter and store screenshots to `/tmp/screenshots`:
+    jasmine.getEnv().addReporter(new HtmlReporter({
+      path: 'reports/frontend'
+    }));
+
+/*     jasmine.getEnv().addReporter(new HtmlReporter({
+      baseDirectory: 'reports/frontend',
+      pathBuilder: function pathBuilder(spec, descriptions, results, capabilities) {
+      // Return '<browser>/<specname>' as path for screenshots:
+      // Example: 'firefox/list-should work'.
+      return path.join(capabilities.caps_.browser, descriptions.join('-'));
+      },
+      screenshotsSubfolder: 'images',
+      jsonsSubfolder: 'jsons'
+    }).getJasmine2Reporter()); */ 
+
     // Displays formatted jasmine results
     var SpecReporter = require('jasmine-spec-reporter');
     jasmine.getEnv().addReporter(new SpecReporter(
@@ -160,7 +176,10 @@ exports.config = {
   // A callback function called once tests are finished.
   // onComplete can optionally return a promise, which Protractor will wait for
   // before shutting down webdriver.
-  onComplete: function(exitCode) {},
+  onComplete: function(exitCode) {
+    browser.ignoreSynchronization = false;
+    browser.waitForAngularEnabled(true);
+  },
 
   // A callback function called once the tests have finished running and
   // the WebDriver instance has been shut down. It is passed the exit code
