@@ -45,7 +45,7 @@
         "./node_modules/jest-html-reporter",
         {
           "pageTitle": "Test Report",
-          "outputPath": "./reports/backend/report.html",
+          "outputPath": "./reports/backend/report.html"
         }
       ]
     ]
