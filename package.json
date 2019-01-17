@@ -6,16 +6,20 @@
   "main": "Gruntfile.js",
   "dependencies": {},
   "devDependencies": {
+    "frisby": "^2.1.1",
     "grunt": "^1.0.3",
     "grunt-cli": "^1.3.2",
     "grunt-contrib-jshint": "^2.0.0",
     "grunt-protractor-runner": "^5.0.0",
+    "grunt-run":"^0.8.1",
     "grunt-shell": "^3.0.1",
     "jasmine-data-provider": "^2.2.0",
     "jasmine-custom-message": "^0.8.2",
     "jasmine-reporters": "^2.3.2",
     "jasmine-spec-reporter": "^2.7.0",
     "jasmine2-custom-message": "^0.9.3",
+    "jest": "^23.6.0",
+    "jest-html-reporter": "^2.4.3",
     "moment": "^2.23.0",
     "protractor": "^5.4.2",
     "protractor-fail-fast": "^3.1.0",
@@ -24,12 +28,26 @@
     "winston-udp": "^0.0.7"
   },
   "scripts": {
-    "all": "protractor conf.js --suite=all",
-    "test": "node node_modules/grunt-cli/bin/grunt default"
+    "test": "./node_modules/.bin/jest"
   },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/a-inglese/WAESAssignment/issues"
+  },
+  "jest": {
+    "verbose": true,
+    "testRegex": "(backend/tests/.*|(\\.|/)(test|spec))\\.jsx?$",
+    "reporters": [
+      "default",
+      [
+        "./node_modules/jest-html-reporter",
+        {
+          "pageTitle": "Test Report",
+          "outputPath": "./reports/backend-test-report.html",
+          "logo": "./waes.svg"
+        }
+      ]
+    ]
   },
   "homepage": "https://github.com/a-inglese/WAESAssignment#readme"
 }

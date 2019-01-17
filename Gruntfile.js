@@ -21,8 +21,6 @@ module.exports = function(grunt) {
         configFile: "frontend/conf.js",
         directConnect: true
       },
-
-      // *** DESKTOP TASKS *** //
       elements: {
         options: {
           configFile: "frontend/conf.js",
@@ -59,7 +57,7 @@ module.exports = function(grunt) {
           }
         }
       },
-      all_tests: {
+      testFrontend: {
         options: {
           configFile: "frontend/conf.js",
           directConnect: true,
@@ -77,6 +75,9 @@ module.exports = function(grunt) {
       },
       install:{
         command:'npm install'
+      },
+      testBackend:{
+        command:'npm test'
       },
       webdriver_update: {
         command: 'node node_modules/webdriver-manager/bin/webdriver-manager update'
@@ -99,6 +100,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('install', ['shell:install']);
   grunt.registerTask('update', ['shell:webdriver_update']);
+  grunt.registerTask('test-backend', ['shell:testBackend']);
 
 
   /// INDIVIDUAL TASKS ///
@@ -121,8 +123,8 @@ module.exports = function(grunt) {
     grunt.task.run(['protractor:signup']);
    });
 
-   grunt.registerTask('all_tests', function (env) {
-    grunt.task.run(['protractor:all_tests']);
+   grunt.registerTask('test-frontend', function (env) {
+    grunt.task.run(['protractor:testFrontend']);
    });
 
 

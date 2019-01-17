@@ -1,0 +1,29 @@
+{
+    "Admin":{
+        "id": 1,
+        "name": "Amazing Admin",
+        "username": "admin",
+        "email": "a.admin@wearewaes.com",
+        "superpower": "Change the course of a waterfall.",
+        "dateOfBirth": "1984-09-18",
+        "isAdmin": true
+    },
+    "Dev":{
+        "id": 2,
+        "name": "Zuper Dooper Dev",
+        "username": "dev",
+        "email": "zd.dev@wearewaes.com",
+        "superpower": "Debug a repellent factory storage.",
+        "dateOfBirth": "1999-10-10",
+        "isAdmin": false
+    },
+    "Tester":{
+        "id": 3,
+        "name": "Al Skept-Cal Tester",
+        "username": "tester",
+        "email": "as.tester@wearewaes.com",
+        "superpower": "Voltage AND Current.",
+        "dateOfBirth": "2014-07-15",
+        "isAdmin": false
+    }  
+}
