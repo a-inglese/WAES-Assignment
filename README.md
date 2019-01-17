@@ -19,12 +19,11 @@ npm install && grunt update
 ## Running FrontEnd Tests
 
 grunt test-frontend
+grunt test-frontend-headless
 
 ## Running Backend Tests
 
 download and run backend project
-
-
 
 grunt test-backend
 
@@ -32,6 +31,6 @@ grunt test-backend
  
  - Frontend
     /reports/frontend
-    
+
  - Backend
     /reports/backend

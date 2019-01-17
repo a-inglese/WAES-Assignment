@@ -1,6 +1,6 @@
 const frisby = require('frisby');
 const fs = require('fs');
-const data = JSON.parse(fs.readFileSync('backend/tests/test_data/testData.json', 'utf8'));
+const data = JSON.parse(fs.readFileSync('backend/test_data/testData.json', 'utf8'));
 
 describe('Check correct creation, update and deletion of a new user', function () {
 

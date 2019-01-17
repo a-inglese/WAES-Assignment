@@ -56,6 +56,7 @@ exports.config = {
 
   capabilities: {
     browserName: 'chrome',
+    chromeOptions: { args: [ "--headless", "--disable-gpu", "--window-size=800,600"] }
   },
 
   // ---------------------------------------------------------------------------
@@ -124,7 +125,7 @@ exports.config = {
     // Add a screenshot reporter and store screenshots to `/tmp/screenshots`:
     jasmine.getEnv().addReporter(new HtmlReporter({
       path: 'reports/frontend'
-    }));
+    })); 
 
     // Displays formatted jasmine results
     var SpecReporter = require('jasmine-spec-reporter');

@@ -1,6 +1,6 @@
 const frisby = require('frisby');
 const fs = require('fs');
-const data = JSON.parse(fs.readFileSync('backend/tests/test_data/testData.json', 'utf8'));
+const data = JSON.parse(fs.readFileSync('backend/test_data/testData.json', 'utf8'));
 
 it ('Given the username ‘admin’ was registered in the database', function() {});
 it('When a client app attempts to login with user ‘admin’ with valid credentials', function() {});

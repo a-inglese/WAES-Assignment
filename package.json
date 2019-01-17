@@ -38,7 +38,7 @@
   },
   "jest": {
     "verbose": true,
-    "testRegex": "(backend/tests/.*|(\\.|/)(test|spec))\\.jsx?$",
+    "testRegex": "(backend/.*|(\\.|/)(test|spec))\\.jsx?$",
     "reporters": [
       "default",
       [

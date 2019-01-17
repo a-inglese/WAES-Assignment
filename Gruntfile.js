@@ -66,6 +66,15 @@ module.exports = function(grunt) {
           }
         }
       },
+      testFrontendHeadless: {
+        options: {
+          configFile: "frontend/conf-headless.js",
+          directConnect: true,
+          args: {
+            suite: "all",
+          }
+        }
+      },
 
     },
 
@@ -125,6 +134,10 @@ module.exports = function(grunt) {
 
    grunt.registerTask('test-frontend', function (env) {
     grunt.task.run(['protractor:testFrontend']);
+   });
+
+   grunt.registerTask('test-frontend-headless', function (env) {
+    grunt.task.run(['protractor:testFrontendHeadless']);
    });
 
 
