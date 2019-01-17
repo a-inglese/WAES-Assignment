@@ -23,9 +23,11 @@ Test Assignment for WAES
     
 ## Running Backend Tests
 
-    download and run backend project
+- download and run backend project first
+    https://bitbucket.org/waesworks/backend-for-testers/overview
+```
     grunt test-backend
-
+```
 ## Report Location
  
  - Frontend
