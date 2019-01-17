@@ -25,5 +25,14 @@
         "superpower": "Voltage AND Current.",
         "dateOfBirth": "2014-07-15",
         "isAdmin": false
-    }  
+    },
+    "NewUser":{
+        "name": "New User",
+        "username": "newguy",
+        "email": "new.guy@wearewaes.com",
+        "superpower": "To be he new guy",
+        "password": "awesome",
+        "dateOfBirth": "1990-10-05",
+        "isAdmin": false
+    } 
 }

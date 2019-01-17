@@ -1,6 +1,6 @@
 const frisby = require('frisby');
 const fs = require('fs');
-const data = JSON.parse(fs.readFileSync('backend/tests/config/testData.json', 'utf8'));
+const data = JSON.parse(fs.readFileSync('backend/tests/test_data/testData.json', 'utf8'));
 
 it ('Should return correct data for user Admin', function () {
     return frisby

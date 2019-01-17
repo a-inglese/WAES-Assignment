@@ -1,6 +1,6 @@
 const frisby = require('frisby');
 const fs = require('fs');
-const data = JSON.parse(fs.readFileSync('backend/tests/config/testData.json', 'utf8'));
+const data = JSON.parse(fs.readFileSync('backend/tests/test_data/testData.json', 'utf8'));
 
 it ('Given the username ‘admin’ was registered in the database', function() {});
 it('When a client app attempts to request user ‘admin’ details', function() {});
@@ -45,4 +45,11 @@ it ('Then the status should be 200 and should return correct JsonObject for user
     .expect('json', 'superpower', data.Tester.superpower)
     .expect('json', 'dateOfBirth', data.Tester.dateOfBirth)
     .expect('json', 'isAdmin', data.Tester.isAdmin)
+});
+it ('Given the username ‘imNotHere’ was not registered in the database', function() {});
+it('When a client app attempts to request user a user ‘imNotHere’ details', function() {});
+it ('Then the status should be 404', function () {
+  return frisby
+    .get('http://localhost:8081/waesheroes/api/v1/users/details?username=imNotHere')
+    .expect('status', 404)
 });

@@ -77,7 +77,7 @@ module.exports = function(grunt) {
         command:'npm install'
       },
       testBackend:{
-        command:'npm test'
+        command:'npm test --runInBand'
       },
       webdriver_update: {
         command: 'node node_modules/webdriver-manager/bin/webdriver-manager update'
