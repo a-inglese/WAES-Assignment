@@ -30,79 +30,6 @@ describe('Feature: As a registered user I want to login to WAES site', function 
         this.DetailsPage = new detailsPage();
     });
 
-    describe("Scenario: Check Login page features", function () {
-
-        it("Given I am on the WAES Home page", function () {
-            browser.get(this.HomePage.getUrl());
-        });
-
-        it("When I click on Login Button on the Header", function () {
-            this.NavigationHelper.goToLoginPage();
-        });
-
-        it("Then I should navigate to Log in Page", function () {
-            expect(this.CommonHeaderElements.getHeader().isDisplayed()).toBe(true);
-
-        });
-
-        it("And I should have header displayed", function () {
-            expect(this.CommonHeaderElements.getHeader().isDisplayed()).toBe(true);
-
-        });
-
-        it("And I should have link to Home Page", function () {
-            expect(this.CommonHeaderElements.getHomeLink().isDisplayed()).toBe(true);
-        });
-
-        it("And I should have link to Login Page", function () {
-            expect(this.CommonHeaderElements.getLoginLink().isDisplayed()).toBe(true);
-        });
-
-        it("And I should have link to Sign Up Page", function () {
-            expect(this.CommonHeaderElements.getSignupLink().isDisplayed()).toBe(true);
-        });
-
-        it("And I should have Status Message", function () {
-            expect(this.CommonHeaderElements.getStatusMessage().isDisplayed()).toBe(true);
-        });
-
-        it("And status Message should be correct", function () {
-            let statusText = this.PageObjectHelper.getElementText(this.CommonHeaderElements.getStatusMessage());
-            expect(statusText).toEqual(this.CommonHeaderElements.getNotLoggedInUserMessage());
-        });
-
-        it("And it should have Title", function () {
-            expect(this.LoginPage.getTitleElement().isDisplayed()).toBe(true);
-        });
-
-        it("And title should be \"Log in\"", function () {
-            let titleDisplayed = this.PageObjectHelper.getElementText(this.LoginPage.getTitleElement());
-            expect(titleDisplayed).toEqual(this.LoginPage.getTitle());
-        });
-
-        it("And it should have description", function () {
-            expect(this.LoginPage.getTitleElement().isDisplayed()).toBe(true);
-        });
-
-        it("And it should have username input", function () {
-            expect(this.LoginPage.getUsernameInput().isDisplayed()).toBe(true);
-        });
-
-        it("And username input should be mandatory", function () {
-            this.PageObjectHelper.isFieldRequired(this.LoginPage.getUsernameInput());
-        });
-
-        it("And it should have password input", function () {
-            expect(this.LoginPage.getPasswordInput().isDisplayed()).toBe(true);
-
-        });
-
-        it("And password input should be mandatory", function () {
-            this.PageObjectHelper.isFieldRequired(this.LoginPage.getPasswordInput());
-        });
-
-    });
-
     describe("Scenario: Login with Admin user", function () {
 
 
@@ -128,7 +55,7 @@ describe('Feature: As a registered user I want to login to WAES site', function 
             this.NavigationHelper.waitForTextInElement(statusMessage, 'Logged in as', 'Incorrect Status Text. Are you on the correct page?');
 
             // Check for correct redirection in URL
-            expect(browser.getCurrentUrl()).toBe(this.ProfilePage.getUrl(),"ERROR => NOT REDIRECTED TO PROFILE PAGE");
+            expect(browser.getCurrentUrl()).toBe(this.ProfilePage.getUrl(), "ERROR => NOT REDIRECTED TO PROFILE PAGE");
         });
 
         it("And status message should be correct", function () {
@@ -157,7 +84,7 @@ describe('Feature: As a registered user I want to login to WAES site', function 
             });
 
             // Check for correct redirection in URL
-            expect(browser.getCurrentUrl()).toBe(this.DetailsPage.getUrl(),"ERROR => NOT REDIRECTED TO DETAILS PAGE");
+            expect(browser.getCurrentUrl()).toBe(this.DetailsPage.getUrl(), "ERROR => NOT REDIRECTED TO DETAILS PAGE");
 
         });
 
@@ -235,23 +162,23 @@ describe('Feature: As a registered user I want to login to WAES site', function 
             });
 
             // Check for correct redirection in URL
-            expect(browser.getCurrentUrl()).toBe(this.DetailsPage.getUrl(),"ERROR => NOT REDIRECTED TO DETAILS PAGE");
+            expect(browser.getCurrentUrl()).toBe(this.DetailsPage.getUrl(), "ERROR => NOT REDIRECTED TO DETAILS PAGE");
 
         });
 
         it("And Details page should have correct Title displayed", function () {
             let titleDisplayed = this.PageObjectHelper.getElementText(this.DetailsPage.getTitleContainer());
-            expect(titleDisplayed).toEqual(this.DetailsPage.getTitle());
+            expect(titleDisplayed).toBe(this.DetailsPage.getTitle(), "ERROR => DETAILS TITLE SHOULD BE DISPLAYED \"YOUR DETAILS\"");
         });
 
         it("And name text section should read \"Name: " + users[DEV].name + "\"", function () {
             let nameSectionText = this.PageObjectHelper.getElementText(this.DetailsPage.getNameContainer());
-            expect(nameSectionText).toEqual("Name: " + users[DEV].name);
+            expect(nameSectionText).toBe("Name: " + users[DEV].name, "ERROR => INCORRECT NAME IN DETAILS PAGE");
         });
 
         it("And email text section should read \"Email address: " + users[DEV].email + "\"", function () {
             let mailSectionText = this.PageObjectHelper.getElementText(this.DetailsPage.getMailContainer());
-            expect(mailSectionText).toEqual("Email address: " + users[DEV].email);
+            expect(mailSectionText).toBe("Email address: " + users[DEV].email, "ERROR => INCORRECT EMAIL IN DETAILS PAGE");
         });
 
         it("And I should be able to log out with " + users[DEV].username, function () {
@@ -262,7 +189,7 @@ describe('Feature: As a registered user I want to login to WAES site', function 
             });
 
             let statusText = this.CommonHeaderElements.getStatusMessage().getText();
-            expect(statusText).toBe(this.CommonHeaderElements.getNotLoggedInUserMessage());
+            expect(statusText).toBe(this.CommonHeaderElements.getNotLoggedInUserMessage(), "ERROR => DETAILS TITLE SHOULD BE DISPLAYED IN DETAILS PAGE");
         });
     });
 

@@ -66,9 +66,27 @@ module.exports = function(grunt) {
           }
         }
       },
+      testFrontendMobile: {
+        options: {
+          configFile: "frontend/conf.mobile.js",
+          directConnect: true,
+          args: {
+            suite: "all",
+          }
+        }
+      },
       testFrontendHeadless: {
         options: {
           configFile: "frontend/conf-headless.js",
+          directConnect: true,
+          args: {
+            suite: "all",
+          }
+        }
+      },
+      testFrontendMobileHeadless: {
+        options: {
+          configFile: "frontend/conf-headless.mobile.js",
           directConnect: true,
           args: {
             suite: "all",
@@ -138,6 +156,14 @@ module.exports = function(grunt) {
 
    grunt.registerTask('test-frontend-headless', function (env) {
     grunt.task.run(['protractor:testFrontendHeadless']);
+   });
+
+   grunt.registerTask('test-frontend-mobile', function (env) {
+    grunt.task.run(['protractor:testFrontendMobile']);
+   });
+
+   grunt.registerTask('test-frontend-mobile-headless', function (env) {
+    grunt.task.run(['protractor:testFrontendMobileHeadless']);
    });
 
 

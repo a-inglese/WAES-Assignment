@@ -1,9 +1,9 @@
 var glob = require("glob"), // path-finder
   path = require('path'),
   failFast = require('protractor-fail-fast'), // fail all tests at first fail
-  HtmlReporter = require('jasmine-pretty-html-reporter').Reporter,
   yamlLoader = require('./helpers/yaml-loader'), // yaml loader
-  ptorYml = new yamlLoader('frontend/config/ptor-config.yml'); // protractor test conf.
+  ptorYml = new yamlLoader('frontend/config/ptor-config.yml'), // protractor test conf.
+  Jasmine2HtmlReporter = require('protractor-jasmine2-html-reporter');
 
 exports.config = {
   // ---------------------------------------------------------------------------
@@ -56,6 +56,15 @@ exports.config = {
 
   capabilities: {
     browserName: 'chrome',
+      chromeOptions: {
+        prefs: {
+          'download': {
+              'directory_upgrade': true,
+              'prompt_for_download': false,
+              'default_directory': 'frontend/downloads/',
+          }
+      }
+    }
   },
 
   // ---------------------------------------------------------------------------
@@ -122,9 +131,8 @@ exports.config = {
     };    
 
     // set jasmine reporters
-    // Add a screenshot reporter and store screenshots to `/tmp/screenshots`:
-    jasmine.getEnv().addReporter(new HtmlReporter({
-      path: 'reports/frontend'
+    jasmine.getEnv().addReporter(new Jasmine2HtmlReporter({
+      savePath: 'reports/frontend'
     }));
 
     // Displays formatted jasmine results

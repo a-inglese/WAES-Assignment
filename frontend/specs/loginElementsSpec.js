@@ -27,33 +27,28 @@ var pageObjectHelper = require('../helpers/pageObjectHelper'),
                 browser.get(this.HomePage.getUrl());     
             });
 
-            it("When I click on Login Button on the Header", function() {
+            it("When I navigate to Login Page", function() {
                 this.NavigationHelper.goToLoginPage();
             });
 
-            it("Then I should navigate to Log in Page", function () {
+            it("Then I should see header displayed", function () {
                 expect(this.CommonHeaderElements.getHeader().isDisplayed()).toBe(true);
                 
             });
 
-            it("And I should have header displayed", function () {
-                expect(this.CommonHeaderElements.getHeader().isDisplayed()).toBe(true);
-                
-            });
-
-            it("And I should have link to Home Page", function () {
+            it("And I should see link to Home Page", function () {
                 expect(this.CommonHeaderElements.getHomeLink().isDisplayed()).toBe(true);
             });
 
-            it("And I should have link to Login Page", function () {
+            it("And I should see link to Login Page", function () {
                 expect(this.CommonHeaderElements.getLoginLink().isDisplayed()).toBe(true); 
             });
 
-            it("And I should have link to Sign Up Page", function () {
+            it("And I should see link to Sign Up Page", function () {
                 expect(this.CommonHeaderElements.getSignupLink().isDisplayed()).toBe(true);
             });
 
-            it("And I should have Status Message", function () {
+            it("And I should see Status Message", function () {
                 expect(this.CommonHeaderElements.getStatusMessage().isDisplayed()).toBe(true);
             });
 
@@ -62,7 +57,7 @@ var pageObjectHelper = require('../helpers/pageObjectHelper'),
                 expect(statusText).toEqual(this.CommonHeaderElements.getNotLoggedInUserMessage());  
             });
 
-            it("And it should have Title", function () {
+            it("And it should see Title", function () {
                 expect(this.LoginPage.getTitleElement().isDisplayed()).toBe(true);
             });
 
@@ -71,11 +66,11 @@ var pageObjectHelper = require('../helpers/pageObjectHelper'),
                 expect(titleDisplayed).toEqual(this.LoginPage.getTitle());
             });
 
-            it("And it should have description", function () {
+            it("And it should see description", function () {
                 expect(this.LoginPage.getTitleElement().isDisplayed()).toBe(true);
             });
 
-            it("And it should have username input", function () {
+            it("And it should see username input", function () {
                 expect(this.LoginPage.getUsernameInput().isDisplayed()).toBe(true);
             });
 
@@ -83,7 +78,7 @@ var pageObjectHelper = require('../helpers/pageObjectHelper'),
                 this.PageObjectHelper.isFieldRequired(this.LoginPage.getUsernameInput());
             });        
 
-            it("And it should have password input", function () {
+            it("And it should see password input", function () {
                 expect(this.LoginPage.getPasswordInput().isDisplayed()).toBe(true);
                 
             });
@@ -91,6 +86,8 @@ var pageObjectHelper = require('../helpers/pageObjectHelper'),
             it("And password input should be mandatory", function () {
                 this.PageObjectHelper.isFieldRequired(this.LoginPage.getPasswordInput());            
             });
+
+            
         
         });
 

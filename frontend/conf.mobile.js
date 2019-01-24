@@ -2,7 +2,7 @@ var glob = require("glob"), // path-finder
   path = require('path'),
   failFast = require('protractor-fail-fast'), // fail all tests at first fail
   yamlLoader = require('./helpers/yaml-loader'), // yaml loader
-  ptorYml = new yamlLoader('frontend/config/ptor-config.yml'), // protractor test conf.
+  ptorYml = new yamlLoader('frontend/config/ptor-config.mobile.yml'), // protractor test conf.
   Jasmine2HtmlReporter = require('protractor-jasmine2-html-reporter');
 
 exports.config = {
@@ -56,7 +56,16 @@ exports.config = {
 
   capabilities: {
     browserName: 'chrome',
-    chromeOptions: { args: [ "--headless", "--disable-gpu", "--window-size=800,600"] }
+/*     chromeOptions: {
+      mobileEmulation: {
+        userAgent: "Mozilla/5.0 (Linux; Android 4.2.1; en-us; Nexus 5 Build/JOP40D) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.166 Mobile Safari/535.19",
+        deviceMetrics: 
+        { "width": 375,
+          "height": 667,
+          "pixelRatio":3.0 },
+      },
+      args: ['--window-size=375,667']
+    } */
   },
 
   // ---------------------------------------------------------------------------
@@ -71,7 +80,7 @@ exports.config = {
   noGlobals: false,
 
   // Spec patterns are relative to the location of this config.
-  specs: [ 'specs/*.js'],
+  specs: ['specs/*.js'],
 
   // If you would like protractor to use a specific suite by default instead of
   // all suites, you can put that in the config file as well.
@@ -81,7 +90,8 @@ exports.config = {
     all: 'specs/*.js',
     login: 'specs/loginSpec.js',
     logout: 'specs/logoutSpec.js',
-    signup: 'specs/signUpSpec.js',
+    signUpPositive: 'specs/signUpSpecPositiveScenarios.js',
+    signUpNegative: 'specs/signUpSpecNegativeScenarios.js',
     elements: 'specs/elementsSpec.js'
   },
 
@@ -109,61 +119,61 @@ exports.config = {
   // setup. This will only run once, and before onPrepare.
   // You can specify a file containing code to run by setting beforeLaunch to
   // the filename string.
-  beforeLaunch: function() {},
+  beforeLaunch: function () {},
 
   // At this point, global variable 'protractor' object will NOT be set up,
   // and globals from the test framework will NOT be available. The main
   // purpose of this function should be to bring up test dependencies.
-  onPrepare: function() {
+  onPrepare: function () {
     // set angular/non angular testing
-    global.isAngularSite = function(flag){
+    global.isAngularSite = function (flag) {
       browser.ignoreSynchronization = !flag;
       browser.waitForAngularEnabled(flag);
-    };    
+    };
 
     // set jasmine reporters
     jasmine.getEnv().addReporter(new Jasmine2HtmlReporter({
-        savePath: 'reports/frontend'
+      savePath: 'reports/frontend'
     }));
 
     // Displays formatted jasmine results
     var SpecReporter = require('jasmine-spec-reporter');
     jasmine.getEnv().addReporter(new SpecReporter(
       {
-      displayStacktrace: 'none',      // display stacktrace for each failed assertion, values: (all|specs|summary|none) 
-      displaySuccessesSummary: false, // display summary of all successes after execution 
-      displayFailuresSummary: true,   // display summary of all failures after execution 
-      displayPendingSummary: false,    // display summary of all pending specs after execution 
-      displaySuccessfulSpec: true,    // display each successful spec 
-      displayFailedSpec: true,        // display each failed spec 
-      displayPendingSpec: false,      // display each pending spec 
-      displaySpecDuration: false,     // display each spec duration 
-      displaySuiteNumber: false,      // display each suite number (hierarchical) 
-      colors: {
-        success: 'green',
-        failure: 'red',
-        pending: 'yellow'
-      },
-      prefixes: {
-        success: '✓ ',
-        failure: '✗ FAIL! ',
-        pending: '* '
-      },
-      customProcessors: []
-      } 
-      
-))
+        displayStacktrace: 'none', // display stacktrace for each failed assertion, values: (all|specs|summary|none) 
+        displaySuccessesSummary: false, // display summary of all successes after execution 
+        displayFailuresSummary: true, // display summary of all failures after execution 
+        displayPendingSummary: false, // display summary of all pending specs after execution 
+        displaySuccessfulSpec: true, // display each successful spec 
+        displayFailedSpec: true, // display each failed spec 
+        displayPendingSpec: false, // display each pending spec 
+        displaySpecDuration: false, // display each spec duration 
+        displaySuiteNumber: false, // display each suite number (hierarchical) 
+        colors: {
+          success: 'green',
+          failure: 'red',
+          pending: 'yellow'
+        },
+        prefixes: {
+          success: '✓ ',
+          failure: '✗ FAIL! ',
+          pending: '* '
+        },
+        customProcessors: []
+      }
 
-    // if specific window size is required: use the following command line
-    browser.driver.manage().window()
-    .setSize(ptorYml.browser.width, ptorYml.browser.height);
+    ))
+
+        // if specific window size is required: use the following command line
+        browser.driver.manage().window()
+        .setSize(ptorYml.browser.width, 800);
 
   },
 
   // A callback function called once tests are finished.
   // onComplete can optionally return a promise, which Protractor will wait for
   // before shutting down webdriver.
-  onComplete: function(exitCode) {
+  onComplete: function (exitCode) {
     browser.ignoreSynchronization = false;
     browser.waitForAngularEnabled(true);
   },
@@ -171,14 +181,14 @@ exports.config = {
   // A callback function called once the tests have finished running and
   // the WebDriver instance has been shut down. It is passed the exit code
   // (0 if the tests passed). This is called once per capability.
-  onCleanUp: function(exitCode) {},
+  onCleanUp: function (exitCode) {},
 
   // A callback function called once all tests have finished running and
   // the WebDriver instance has been shut down. It is passed the exit code
   // (0 if the tests passed). afterLaunch must return a promise if you want
   // asynchronous code to be executed before the program exits.
   // This is called only once before the program exits (after onCleanUp).
-  afterLaunch: function(exitCode) {},
+  afterLaunch: function (exitCode) {},
 
   // If set, protractor will save the test output in json format at this path.
   // The path is relative to the location of this config.

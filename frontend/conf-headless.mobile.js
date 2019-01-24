@@ -56,7 +56,11 @@ exports.config = {
 
   capabilities: {
     browserName: 'chrome',
-    chromeOptions: { args: [ "--headless", "--disable-gpu", "--window-size=800,600"] }
+    chromeOptions: { 
+      mobileEmulation: {
+        deviceName: 'iPhone 6'
+      },
+      args: [ "--headless", "--disable-gpu", "--window-size=800,600"] }
   },
 
   // ---------------------------------------------------------------------------
