@@ -56,16 +56,11 @@ exports.config = {
 
   capabilities: {
     browserName: 'chrome',
-/*     chromeOptions: {
+   chromeOptions: {
       mobileEmulation: {
-        userAgent: "Mozilla/5.0 (Linux; Android 4.2.1; en-us; Nexus 5 Build/JOP40D) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.166 Mobile Safari/535.19",
-        deviceMetrics: 
-        { "width": 375,
-          "height": 667,
-          "pixelRatio":3.0 },
-      },
-      args: ['--window-size=375,667']
-    } */
+        'deviceName': 'iPhone X'
+      }
+    }
   },
 
   // ---------------------------------------------------------------------------
@@ -171,9 +166,9 @@ exports.config = {
 
     ))
 
-        // if specific window size is required: use the following command line
-        browser.driver.manage().window()
-        .setSize(700, 1024);
+    // if specific window size is required: use the following command line
+    browser.driver.manage().window()
+    .setSize(ptorYml.browser.width, ptorYml.browser.height);
 
   },
 

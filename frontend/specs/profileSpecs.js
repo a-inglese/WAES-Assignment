@@ -10,7 +10,7 @@ var pageObjectHelper = require('../helpers/pageObjectHelper'),
     homePage = require('../page_object/homePage'),
     users = require('../config/test_data/userData.json', 'utf8');
 
-describe("Feature: As a User, I want to check the correct functionality of the Profile Page", function () {
+describe("Feature: As a User, I want to check that only privileged users have access to the list of managed users in Profile Page", function () {
 
     beforeAll(function () {
         // Ignores synchronization with angular for non-angular page,

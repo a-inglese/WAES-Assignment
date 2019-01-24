@@ -64,6 +64,7 @@ describe("Feature: As a User, I want to check that all pages are correctly secur
 
     });
 
+
     describe('Scenario: SQL Injection - Sign Up Page', function () {
 
         it("Given I navigate to Signup page", function () {
@@ -93,6 +94,49 @@ describe("Feature: As a User, I want to check that all pages are correctly secur
             // Return to homepage
             this.NavigationHelper.goToHomePage();
         });
+    });
+
+    describe('Scenario: Password Masking - Log In Page', function () {
+
+        it("Given I navigate to login page", function () {
+            let self = this,
+                loginLink = this.CommonHeaderElements.getLoginLink();
+
+            // Waits for Login link to be present before clicking
+            this.NavigationHelper.waitForElement(loginLink, 'Login Link not present. Are you on the correct page?');
+
+            // Clicks login page link
+            this.CommonHeaderElements.goToLoginPage().then(function () {
+                let userInput = self.LoginPage.getUsernameInput();
+                // Check for presence of Username Input. In which case we are in Login page
+                self.NavigationHelper.waitForElement(userInput, 'Username Input not present. Are you on the correct page?');
+            });
+        });
+
+        it("When I set any characters as the password", function () {
+            this.LoginPage.setPassword('anyPassword');
+        });
+
+        it("Then I should see that the password is masked", function () {
+            expect(this.LoginPage.getPasswordInput().getAttribute("type")).toEqual("password");
+        });
+
+    });
+
+    describe('Scenario: Password Masking - Sign Up Page', function () {
+
+        it("Given I navigate to Signup page", function () {
+            this.NavigationHelper.goToSignupPage();
+        });
+
+        it("When I set any characters as the password", function () {
+            this.SignupPage.setPassword('anyPassword');
+        });
+
+        it("Then I should see that the password is masked", function () {
+            expect(this.SignupPage.getPasswordInput().getAttribute("type")).toEqual("password");
+        });
+
     });
 
     describe('Scenario: Check for HTTPS in Home Page', function () {

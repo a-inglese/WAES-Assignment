@@ -4,8 +4,8 @@ browser:
   seleniumServerJarPath: '../../../node_modules/webdriver-manager/selenium/selenium-server-standalone-3.*.jar'
   chromeDriverPath: "../../../node_modules/webdriver-manager/selenium/chromedriver_2.*"
   firefoxPath:
-  width: 200
-  height: 750
+  width: 385
+  height: 712
 
 timeouts:
   allScriptsTimeout: 30000

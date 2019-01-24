@@ -32,94 +32,94 @@ var pageObjectHelper = require('../helpers/pageObjectHelper'),
                 expect(this.CommonHeaderElements.getHeader().isDisplayed()).toBe(true);                
             });
 
-            it("Then I should see link to Home Page", function () {
+            it("And I should see link to Home Page", function () {
                 expect(this.CommonHeaderElements.getHomeLink().isDisplayed()).toBe(true);
             });
 
-            it("Then I should see link to Login Page", function () {
+            it("And I should see link to Login Page", function () {
                 expect(this.CommonHeaderElements.getLoginLink().isDisplayed()).toBe(true); 
             });
 
-            it("Then I should see link to Sign Up Page", function () {
+            it("And I should see link to Sign Up Page", function () {
                 expect(this.CommonHeaderElements.getSignupLink().isDisplayed()).toBe(true);
             });
 
-            it("Then I should see Status Message", function () {
+            it("And I should see Status Message", function () {
                 expect(this.CommonHeaderElements.getStatusMessage().isDisplayed()).toBe(true);
             });
 
-            it("Status Message should be correct", function () {
+            it("And Status Message should be correct", function () {
                 let statusText = this.PageObjectHelper.getElementText(this.CommonHeaderElements.getStatusMessage());
                 expect(statusText).toEqual(this.CommonHeaderElements.getNotLoggedInUserMessage());  
             });
 
-            it("Then I should see Title", function () {
+            it("And I should see the Title", function () {
                 expect(this.SignupPage.getTitleElement().isDisplayed()).toBe(true);
             });
 
-            it("Title should be \"Sign Up\"", function () {
+            it("And Title should be \"Sign Up\"", function () {
                 let titleDisplayed = this.PageObjectHelper.getElementText(this.SignupPage.getTitleElement());
                 expect(titleDisplayed).toEqual(this.SignupPage.getTitle());
             });
 
-            it("Then I should see description", function () {
+            it("And I should see description", function () {
                 expect(this.SignupPage.getTitleElement().isDisplayed()).toBe(true);
             });
 
-            it("Then I should see username input", function () {
+            it("And I should see username input", function () {
                 expect(this.SignupPage.getUsernameInput().isDisplayed()).toBe(true);
             });
 
-            it("Username input should be mandatory", function () {
+            it("And username input should be mandatory", function () {
                 this.PageObjectHelper.isFieldRequired(this.SignupPage.getUsernameInput());
             });        
 
-            it("Then I should see password input", function () {
+            it("And I should see password input", function () {
                 expect(this.SignupPage.getPasswordInput().isDisplayed()).toBe(true);                
             });
 
-            it("Password input should be mandatory", function () {
+            it("And password input should be mandatory", function () {
                 this.PageObjectHelper.isFieldRequired(this.SignupPage.getPasswordInput());            
             });
 
 
-            it("Then I should see name input", function () {
+            it("And I should see name input", function () {
                 expect(this.SignupPage.getNameInput().isDisplayed()).toBe(true);                
             });
 
-            it("Name input should be mandatory", function () {
+            it("And name input should be mandatory", function () {
                 this.PageObjectHelper.isFieldRequired(this.SignupPage.getNameInput());            
             });
 
-            it("Then I should see email input", function () {
+            it("And I should see email input", function () {
                 expect(this.SignupPage.getEmailInput().isDisplayed()).toBe(true);                
             });
 
-            it("Email input should be mandatory", function () {
+            it("And email input should be mandatory", function () {
                 this.PageObjectHelper.isFieldRequired(this.SignupPage.getEmailInput());            
             });
 
-            it("Then I should see day of birth drop-down", function () {
+            it("And I should see day of birth drop-down", function () {
                 expect(this.SignupPage.getDayInput().isDisplayed()).toBe(true);                
             });
 
-            it("Day input should be mandatory", function () {
+            it("And day input should be mandatory", function () {
                 this.PageObjectHelper.isFieldRequired(this.SignupPage.getDayInput());            
             });
 
-            it("Then I should see month of birth drop-down", function () {
+            it("And I should see month of birth drop-down", function () {
                 expect(this.SignupPage.getMonthInput().isDisplayed()).toBe(true);                
             });
 
-            it("Month input should be mandatory", function () {
+            it("And month input should be mandatory", function () {
                 this.PageObjectHelper.isFieldRequired(this.SignupPage.getMonthInput());            
             });
 
-            it("Then I should see year of birth drop-down", function () {
+            it("And I should see year of birth drop-down", function () {
                 expect(this.SignupPage.getYearInput().isDisplayed()).toBe(true);                
             });
 
-            it("Year input should be mandatory", function () {
+            it("And year input should be mandatory", function () {
                 this.PageObjectHelper.isFieldRequired(this.SignupPage.getYearInput());            
             });
         
