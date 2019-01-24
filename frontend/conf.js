@@ -80,7 +80,8 @@ exports.config = {
     all: 'specs/*.js',
     login: 'specs/loginSpec.js',
     logout: 'specs/logoutSpec.js',
-    signup: 'specs/signUpSpec.js',
+    signUpPositive: 'specs/signUpSpecPositiveScenarios.js',
+    signUpNegative: 'specs/signUpSpecNegativeScenarios.js',
     elements: 'specs/elementsSpec.js'
   },
 
@@ -130,7 +131,7 @@ exports.config = {
     var SpecReporter = require('jasmine-spec-reporter');
     jasmine.getEnv().addReporter(new SpecReporter(
       {
-      displayStacktrace: 'all',      // display stacktrace for each failed assertion, values: (all|specs|summary|none) 
+      displayStacktrace: 'none',      // display stacktrace for each failed assertion, values: (all|specs|summary|none) 
       displaySuccessesSummary: false, // display summary of all successes after execution 
       displayFailuresSummary: true,   // display summary of all failures after execution 
       displayPendingSummary: false,    // display summary of all pending specs after execution 

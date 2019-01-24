@@ -3,7 +3,8 @@ var glob = require("glob"), // path-finder
   failFast = require('protractor-fail-fast'), // fail all tests at first fail
   HtmlReporter = require('jasmine-pretty-html-reporter').Reporter,
   yamlLoader = require('./helpers/yaml-loader'), // yaml loader
-  ptorYml = new yamlLoader('frontend/config/ptor-config.yml'); // protractor test conf.
+  ptorYml = new yamlLoader('frontend/config/ptor-config.yml'), // protractor test conf.
+  Jasmine2HtmlReporter = require('protractor-jasmine2-html-reporter');
 
 exports.config = {
   // ---------------------------------------------------------------------------
@@ -127,11 +128,15 @@ exports.config = {
       path: 'reports/frontend'
     })); 
 
+    jasmine.getEnv().addReporter(new Jasmine2HtmlReporter({
+        savePath: 'reports/htmlreporter'
+    }));
+
     // Displays formatted jasmine results
     var SpecReporter = require('jasmine-spec-reporter');
     jasmine.getEnv().addReporter(new SpecReporter(
       {
-      displayStacktrace: 'all',      // display stacktrace for each failed assertion, values: (all|specs|summary|none) 
+      displayStacktrace: 'none',      // display stacktrace for each failed assertion, values: (all|specs|summary|none) 
       displaySuccessesSummary: false, // display summary of all successes after execution 
       displayFailuresSummary: true,   // display summary of all failures after execution 
       displayPendingSummary: false,    // display summary of all pending specs after execution 

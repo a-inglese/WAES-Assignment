@@ -1,0 +1,49 @@
+{
+        "correct_fields": {
+            "username": "ainglese",
+            "password": "passw0rd", 
+            "name": "Agustin Inglese", 
+            "email": "agustin.inglese@gmail.com", 
+            "dayOfBirth": "15",
+            "monthOfBirth": "October",
+            "yearOfBirth": "1986"
+        },
+        "username_with_special_chars": {
+            "username": "%&$!·$!%%&/",
+            "password": "123", 
+            "name": "Martös Skøeberg", 
+            "email": "mkoerberg@outlook.com", 
+            "dayOfBirth": "6",
+            "monthOfBirth": "August",
+            "yearOfBirth": "1972"
+        },
+        "very_long_input": {
+            "username": "AdolphBlaineCharlesDavidEarlFrederickGeraldHubertIrvinJohnKennethLloydMartinNeroOliverPaulQuincyRandolphShermanThomasUncasVictorWilliamXerxesYancyWolfeschlegelsteinhausenbergerdorff",
+            "password": "AdolphBlaineCharlesDavidEarlFrederickGeraldHubertIrvinJohnKennethLloydMartinNeroOliverPaulQuincyRandolphShermanThomasUncasVictorWilliamXerxesYancyWolfeschlegelsteinhausenbergerdorff0000000000000000000000000001111111111111111111111111111111111222222222222222222222222222222222222222555555555555555555555555444444444444444444444444444333333333333333333", 
+            "name": "Adolph Blaine Charles David Earl Frederick Gerald Hubert Irvin John Kenneth Lloyd Martin Nero Oliver Paul Quincy Randolph Sherman Thomas Uncas Victor William Xerxes Yancy Wolfeschlegelsteinhausenbergerdorff", 
+            "email": "AdolphBlaineCharlesDavidEarlFrederickGeraldHubertIrvinJohnKennethLloydMartinNeroOliverPaulQuincyRandolphShermanThomasUncasVictorWilliamXerxesYancyWolfeschlegelsteinhausenbergerdorff@amadeus.com", 
+            "dayOfBirth": "27",
+            "monthOfBirth": "January",
+            "yearOfBirth": "1900"
+        },
+        "invalid_email": {
+            "username": "justpassingby",
+            "password": "imnothere", 
+            "name": "Guy Incognito", 
+            "email": "this.is.not.my.email", 
+            "dayOfBirth": "01",
+            "monthOfBirth": "January",
+            "yearOfBirth": "2000"
+        },
+        "invalid_birth_date": {
+            "username": "notbornyet",
+            "password": "drowssap", 
+            "name": "Not Yet", 
+            "email": "unborn@test.com", 
+            "dayOfBirth": "22",
+            "monthOfBirth": "September",
+            "yearOfBirth": "2019"
+        }    
+}
+
+

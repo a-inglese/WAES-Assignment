@@ -2,6 +2,8 @@ function ProfilePage () {
   this.url = 'https://waesworks.bitbucket.io/app/profile';
   this.title = 'Your Profile';
 
+  this.userListTable = element(by.id('users_list_table'));
+
 
   // GETTERS //
 
@@ -12,6 +14,10 @@ function ProfilePage () {
   ProfilePage.prototype.getTitle = function(){
       return this.title;
   };
+
+  ProfilePage.prototype.getUserListTable = function(){
+    return this.userListTable;
+};
 
 }
 
