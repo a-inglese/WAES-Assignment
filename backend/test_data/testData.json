@@ -30,9 +30,27 @@
         "name": "New User",
         "username": "newguy",
         "email": "new.guy@wearewaes.com",
-        "superpower": "To be he new guy",
+        "superpower": "To be the new guy",
         "password": "awesome",
         "dateOfBirth": "1990-10-05",
         "isAdmin": false
-    } 
+    },
+    "NewUser2":{
+        "name": "New User 2",
+        "username": "newguy2",
+        "email": "new.guy2@wearewaes.com",
+        "superpower": "To be the new guy 2",
+        "password": "awesome2",
+        "dateOfBirth": "1990-10-06",
+        "isAdmin": false
+    },
+    "NewAdmin":{
+        "name": "New Admin",
+        "username": "newadmin",
+        "email": "new.admin@wearewaes.com",
+        "superpower": "To be the new admin",
+        "password": "heroic",
+        "dateOfBirth": "1985-02-20",
+        "isAdmin": true
+    }   
 }

@@ -21,6 +21,7 @@
     "jasmine2-custom-message": "^0.9.3",
     "jest": "^23.6.0",
     "jest-html-reporter": "^2.4.3",
+    "jest-stare": "^1.11.1",
     "moment": "^2.23.0",
     "protractor": "^5.4.2",
     "protractor-beautiful-reporter": "^1.2.7",
@@ -39,17 +40,14 @@
   },
   "jest": {
     "verbose": true,
-    "testRegex": "(backend/.*|(\\.|/)(test|spec))\\.jsx?$",
+    "testRegex": "(backend/api/.*|(\\.|/)(test|spec))\\.jsx?$",
     "reporters": [
       "default",
-      [
-        "./node_modules/jest-html-reporter",
-        {
-          "pageTitle": "Test Report",
-          "outputPath": "./reports/backend/report.html"
-        }
-      ]
+      "jest-stare"
     ]
+  },
+  "jest-stare": {
+    "resultDir": "./reports/backend/"
   },
   "homepage": "https://github.com/a-inglese/WAESAssignment#readme"
 }

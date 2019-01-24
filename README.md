@@ -19,7 +19,12 @@ Test Assignment for WAES
 ## Running FrontEnd Tests
 
     grunt test-frontend
-    grunt test-frontend-headless
+    grunt test-frontend --headless
+
+## Running FrontEnd Tests Mobile
+
+    grunt test-frontend --mobile
+    grunt test-frontend --mobile --headless    
     
 ## Running Backend Tests
 
