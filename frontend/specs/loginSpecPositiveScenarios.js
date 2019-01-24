@@ -66,43 +66,6 @@ describe('Feature: As a registered user I want to login to WAES site', function 
             });
         });
 
-        it("And I should see a list of managed users", function () {
-            expect(this.ProfilePage.getUserListTable().isPresent()).toBe(true, "ERROR => LIST OF MANAGED USERS SHOULD BE PRESENT");
-            expect(this.ProfilePage.getUserListTable().isDisplayed()).toBe(true, "ERROR => LIST OF MANAGED USERS SHOULD BE VISIBLE");
-        });
-
-        it("And I should be able to navigate to Details page for " + users[ADMIN].username, function () {
-            var self = this;
-            var detailsLink = this.CommonHeaderElements.getDetailsLink();
-
-            this.NavigationHelper.waitForElement(detailsLink, 'Details Link not present. Are you on the correct page?');
-
-            this.CommonHeaderElements.goToDetailsPage().then(function () {
-                let titleContainer = self.DetailsPage.getTitleContainer();
-                // Check for presence of Title container. In wich case we are in Details page
-                self.NavigationHelper.waitForElement(titleContainer, 'Title container not present. Are you on the correct page?');
-            });
-
-            // Check for correct redirection in URL
-            expect(browser.getCurrentUrl()).toBe(this.DetailsPage.getUrl(), "ERROR => NOT REDIRECTED TO DETAILS PAGE");
-
-        });
-
-        it("And Details page should have correct Title displayed", function () {
-            let titleDisplayed = this.PageObjectHelper.getElementText(this.DetailsPage.getTitleContainer());
-            expect(titleDisplayed).toEqual(this.DetailsPage.getTitle());
-        });
-
-        it("And name text section should read \"Name: " + users[ADMIN].name + "\"", function () {
-            let nameSectionText = this.PageObjectHelper.getElementText(this.DetailsPage.getNameContainer());
-            expect(nameSectionText).toEqual("Name: " + users[ADMIN].name);
-        });
-
-        it("And email text section should read \"Email address: " + users[ADMIN].email + "\"", function () {
-            let mailSectionText = this.PageObjectHelper.getElementText(this.DetailsPage.getMailContainer());
-            expect(mailSectionText).toEqual("Email address: " + users[ADMIN].email);
-        });
-
         it("And I should be able to log out with " + users[ADMIN].username, function () {
             self = this;
             this.CommonHeaderElements.logOut().then(function () {
@@ -122,9 +85,15 @@ describe('Feature: As a registered user I want to login to WAES site', function 
             this.NavigationHelper.goToLoginPage();
         });
 
-        it("When I enter password " + users[DEV].username, function () {
+        it("And I enter username " + users[DEV].username, function () {
             this.LoginPage.setUsername(users[DEV].username);
+        });
+
+        it("And I enter password " + users[DEV].password, function () {
             this.LoginPage.setPassword(users[DEV].password);
+        });
+
+        it("When I click Log In button", function () {
             this.LoginPage.login();
         });
 
@@ -143,42 +112,6 @@ describe('Feature: As a registered user I want to login to WAES site', function 
                 expect(text).toContain(users[DEV].username, "ERROR => STATUS MESSAGE SHOULD CONTAIN USERNAME");
                 expect(text).toContain(users[DEV].email, "ERROR => STATUS MESSAGE SHOULD CONTAIN EMAIL");
             });
-        });
-
-        it("And I should NOT see a list of managed users", function () {
-            expect(browser.isElementPresent(this.ProfilePage.getUserListTable())).toBe(false, "ERROR => I SHOULDN'T BE ABLE SEE A LIST OF MANAGED USERS");
-        });
-
-        it("And I should be able to navigate to Details page for " + users[DEV].username, function () {
-            var self = this;
-            var detailsLink = this.CommonHeaderElements.getDetailsLink();
-
-            this.NavigationHelper.waitForElement(detailsLink, 'Details Link not present. Are you on the correct page?');
-
-            this.CommonHeaderElements.goToDetailsPage().then(function () {
-                let titleContainer = self.DetailsPage.getTitleContainer();
-                // Check for presence of Title container. In wich case we are in Details page
-                self.NavigationHelper.waitForElement(titleContainer, 'Title container not present. Are you on the correct page?');
-            });
-
-            // Check for correct redirection in URL
-            expect(browser.getCurrentUrl()).toBe(this.DetailsPage.getUrl(), "ERROR => NOT REDIRECTED TO DETAILS PAGE");
-
-        });
-
-        it("And Details page should have correct Title displayed", function () {
-            let titleDisplayed = this.PageObjectHelper.getElementText(this.DetailsPage.getTitleContainer());
-            expect(titleDisplayed).toBe(this.DetailsPage.getTitle(), "ERROR => DETAILS TITLE SHOULD BE DISPLAYED \"YOUR DETAILS\"");
-        });
-
-        it("And name text section should read \"Name: " + users[DEV].name + "\"", function () {
-            let nameSectionText = this.PageObjectHelper.getElementText(this.DetailsPage.getNameContainer());
-            expect(nameSectionText).toBe("Name: " + users[DEV].name, "ERROR => INCORRECT NAME IN DETAILS PAGE");
-        });
-
-        it("And email text section should read \"Email address: " + users[DEV].email + "\"", function () {
-            let mailSectionText = this.PageObjectHelper.getElementText(this.DetailsPage.getMailContainer());
-            expect(mailSectionText).toBe("Email address: " + users[DEV].email, "ERROR => INCORRECT EMAIL IN DETAILS PAGE");
         });
 
         it("And I should be able to log out with " + users[DEV].username, function () {
@@ -200,9 +133,15 @@ describe('Feature: As a registered user I want to login to WAES site', function 
             this.NavigationHelper.goToLoginPage();
         });
 
-        it("When I enter password " + users[TEST].username, function () {
+        it("And I enter username" + users[TEST].username, function () {
             this.LoginPage.setUsername(users[TEST].username);
+        });
+
+        it("And I enter password" + users[TEST].username, function () {
             this.LoginPage.setPassword(users[TEST].password);
+        });
+
+        it("When I click Log In button" + users[TEST].username, function () {
             this.LoginPage.login();
         });
 
@@ -221,42 +160,6 @@ describe('Feature: As a registered user I want to login to WAES site', function 
                 expect(text).toContain(users[TEST].username, "ERROR => STATUS MESSAGE SHOULD CONTAIN USERNAME");
                 expect(text).toContain(users[TEST].email, "ERROR => STATUS MESSAGE SHOULD CONTAIN EMAIL");
             });
-        });
-
-        it("And I should NOT see a list of users", function () {
-            expect(browser.isElementPresent(this.ProfilePage.getUserListTable())).toBe(false, "ERROR => I SHOULDN'T BE ABLE SEE A LIST OF MANAGED USERS");
-        });
-
-        it("And I should be able to navigate to Details page for " + users[TEST].username, function () {
-            var self = this;
-            var detailsLink = this.CommonHeaderElements.getDetailsLink();
-
-            this.NavigationHelper.waitForElement(detailsLink, 'Details Link not present. Are you on the correct page?');
-
-            this.CommonHeaderElements.goToDetailsPage().then(function () {
-                let titleContainer = self.DetailsPage.getTitleContainer();
-                // Check for presence of Title container. In wich case we are in Details page
-                self.NavigationHelper.waitForElement(titleContainer, 'Title container not present. Are you on the correct page?');
-            });
-
-            // Check for correct redirection in URL
-            expect(browser.getCurrentUrl()).toBe(this.DetailsPage.getUrl(), "ERROR => USER NOT CORRECTLY REDIRECTED TO DETAILS PAGE");
-
-        });
-
-        it("And Details page should have correct Title displayed", function () {
-            let titleDisplayed = this.PageObjectHelper.getElementText(this.DetailsPage.getTitleContainer());
-            expect(titleDisplayed).toBe(this.DetailsPage.getTitle(), "ERROR => TITLE SHOWN IS WRONG");
-        });
-
-        it("And name text section should read \"Name: " + users[DEV].name + "\"", function () {
-            let nameSectionText = this.PageObjectHelper.getElementText(this.DetailsPage.getNameContainer());
-            expect(nameSectionText).toBe("Name: " + users[TEST].name, "ERROR => NAME SHOWN IS WRONG");
-        });
-
-        it("And email text section should read \"Email address: " + users[TEST].email + "\"", function () {
-            let mailSectionText = this.PageObjectHelper.getElementText(this.DetailsPage.getMailContainer());
-            expect(mailSectionText).toBe("Email address: " + users[TEST].email, "ERROR => EMAIL SHOWN IS WRONG");
         });
 
         it("And I should be able to log out with " + users[TEST].username, function () {

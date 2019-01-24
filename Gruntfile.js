@@ -1,5 +1,15 @@
-module.exports = function(grunt) {
+module.exports = function (grunt) {
   process.execArgv = [];
+
+  // Params helper setter
+  function setParams(env) {
+    let configJson = grunt.file.readJSON('frontend/config/parameterConfig.json');
+
+    configJson.mobile = grunt.option('mobile') || configJson.mobile;
+    configJson.headless = grunt.option('headless') || configJson.headless;
+
+    grunt.config.set('params', configJson);
+  }
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
@@ -27,6 +37,7 @@ module.exports = function(grunt) {
           directConnect: true,
           args: {
             suite: "frontend/conf.js",
+            params: '<%= params %>'
           }
         }
       },
@@ -36,6 +47,7 @@ module.exports = function(grunt) {
           directConnect: true,
           args: {
             suite: "frontend/conf.js",
+            params: '<%= params %>'
           }
         }
       },
@@ -45,6 +57,7 @@ module.exports = function(grunt) {
           directConnect: true,
           args: {
             suite: "logout",
+            params: '<%= params %>'
           }
         }
       },
@@ -54,6 +67,7 @@ module.exports = function(grunt) {
           directConnect: true,
           args: {
             suite: "signup",
+            params: '<%= params %>'
           }
         }
       },
@@ -62,7 +76,8 @@ module.exports = function(grunt) {
           configFile: "frontend/conf.js",
           directConnect: true,
           args: {
-            suite: "all",
+            suite: ['homePage', 'download', 'loginPositive', 'loginNegative', 'logout', 'loginElements', 'loginNegative', 'loginPositive', 'signupElements', 'signUpPositive', 'signUpNegative', 'profile', 'detail', 'signupElements'],
+            params: '<%= params %>'
           }
         }
       },
@@ -71,7 +86,8 @@ module.exports = function(grunt) {
           configFile: "frontend/conf.mobile.js",
           directConnect: true,
           args: {
-            suite: "all",
+            suite: ['homePage', 'download', 'loginPositive', 'loginNegative', 'logout', 'loginElements', 'loginNegative', 'loginPositive', 'signupElements', 'signUpPositive', 'signUpNegative', 'profile', 'detail', 'signupElements'],
+            params: '<%= params %>'
           }
         }
       },
@@ -80,7 +96,8 @@ module.exports = function(grunt) {
           configFile: "frontend/conf-headless.js",
           directConnect: true,
           args: {
-            suite: "all",
+            suite: ['homePage', 'loginPositive', 'loginNegative', 'logout', 'loginElements', 'loginNegative', 'loginPositive', 'signupElements', 'signUpPositive', 'signUpNegative', 'profile', 'detail', 'signupElements'],
+            params: '<%= params %>'
           }
         }
       },
@@ -89,7 +106,8 @@ module.exports = function(grunt) {
           configFile: "frontend/conf-headless.mobile.js",
           directConnect: true,
           args: {
-            suite: "all",
+            suite: ['homePage', 'loginPositive', 'loginNegative', 'logout', 'loginElements', 'loginNegative', 'loginPositive', 'signupElements', 'signUpPositive', 'signUpNegative', 'profile', 'detail', 'signupElements'],
+            params: '<%= params %>'
           }
         }
       },
@@ -100,18 +118,18 @@ module.exports = function(grunt) {
       options: {
         stdout: true
       },
-      install:{
-        command:'npm install'
+      install: {
+        command: 'npm install'
       },
-      testBackend:{
-        command:'npm test --runInBand'
+      testBackend: {
+        command: 'npm test --runInBand'
       },
       webdriver_update: {
         command: 'node node_modules/webdriver-manager/bin/webdriver-manager update'
       }
     },
 
-});
+  });
 
 
   /// GRUNT PLUGIN LOAD ///
@@ -135,36 +153,60 @@ module.exports = function(grunt) {
   grunt.registerTask('default', ['protractor:full']);
 
   grunt.registerTask('elements', function (env) {
-   grunt.task.run(['protractor:elements']);
+    setParams(env);
+    grunt.task.run(['protractor:elements']);
   });
 
   grunt.registerTask('login', function (env) {
+    setParams(env);
     grunt.task.run(['protractor:login']);
-   });
+  });
 
-   grunt.registerTask('logout', function (env) {
+  grunt.registerTask('logout', function (env) {
+    setParams(env);
     grunt.task.run(['protractor:logout']);
-   });
+  });
 
   grunt.registerTask('signup', function (env) {
+    setParams(env);
     grunt.task.run(['protractor:signup']);
-   });
+  });
 
-   grunt.registerTask('test-frontend', function (env) {
-    grunt.task.run(['protractor:testFrontend']);
-   });
+  grunt.registerTask('test-frontend', function (env) {
+    setParams(env);
+    if (grunt.config.data.params.mobile == true) {
+      if (grunt.config.data.params.headless == true) {
+        console.log("MOBILE HEADLESS")
+        grunt.task.run(['protractor:testFrontendMobileHeadless']);
+      } else {
+        console.log("MOBILE");
+        grunt.task.run(['protractor:testFrontendMobile']);
+      }
+    } else {
+      if (grunt.config.data.params.headless == true) {
+        console.log("DESKTOP HEADLESS")
+        grunt.task.run(['protractor:testFrontendHeadless']);
+      } else {
+        console.log("DESKTOP")
+        grunt.task.run(['protractor:testFrontend']);
+      }
+    }
+  });
 
-   grunt.registerTask('test-frontend-headless', function (env) {
+  grunt.registerTask('test-frontend-headless', function (env) {
+    setParams(env);
     grunt.task.run(['protractor:testFrontendHeadless']);
-   });
+  });
 
-   grunt.registerTask('test-frontend-mobile', function (env) {
+  grunt.registerTask('test-frontend-mobile', function (env) {
+    setParams(env);
     grunt.task.run(['protractor:testFrontendMobile']);
-   });
+  });
 
-   grunt.registerTask('test-frontend-mobile-headless', function (env) {
+  grunt.registerTask('test-frontend-mobile-headless', function (env) {
+    setParams(env);
     grunt.task.run(['protractor:testFrontendMobileHeadless']);
-   });
+  });
 
 
 

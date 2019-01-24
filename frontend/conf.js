@@ -58,7 +58,7 @@ exports.config = {
     browserName: 'chrome',
       chromeOptions: {
         prefs: {
-          'download': {
+              'download': {
               'directory_upgrade': true,
               'prompt_for_download': false,
               'default_directory': 'frontend/downloads/',
@@ -87,11 +87,18 @@ exports.config = {
 
   suites: {
     all: 'specs/*.js',
-    login: 'specs/loginSpec.js',
+    detail: 'specs/detailSpecs.js',
+    download: 'specs/fileDownloadSpec.js',
+    homePage: 'specs/HomePageSpec.js',
+    security: 'specs/SecuritySpec.js',
+    loginElements: 'specs/loginElementsSpec.js',
+    loginNegative: 'specs/loginSpecNegativeScenarios.js',
+    loginPositive: 'specs/loginSpecPositiveScenarios.js',
     logout: 'specs/logoutSpec.js',
-    signUpPositive: 'specs/signUpSpecPositiveScenarios.js',
+    profile: 'specs/profileSpecs.js',
+    signupElements: 'specs/signUpElementsSpec.js',
+    signUpPositive: 'specs/signUpspecPositiveScenarios.js',
     signUpNegative: 'specs/signUpSpecNegativeScenarios.js',
-    elements: 'specs/elementsSpec.js'
   },
 
   // ---------------------------------------------------------------------------

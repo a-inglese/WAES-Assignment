@@ -3,7 +3,7 @@ var navigationHelper = require('../helpers/navigationHelper'),
     homePage = require('../page_object/homePage'),
     loginPage = require('../page_object/loginPage');
 
-describe("As a User, I want to Log Out from WAES website", function() {
+describe("Feature: As a User, I want to Log Out from WAES Assignment website", function() {
 
     beforeAll(function () {
         // Ignores synchronization with angular for non-angular page,
@@ -14,7 +14,7 @@ describe("As a User, I want to Log Out from WAES website", function() {
     });
 
 
-    describe('Logout functionality', function() {
+    describe('Scenario: Logout functionality', function() {
 
         beforeEach(function() {
             this.CommonHeaderElements = new commheadel();

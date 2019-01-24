@@ -3,6 +3,7 @@ var commheadel = require('../page_object/commonHeaderElements'),
     loginPage = require('../page_object/loginPage'),
     signUpPage = require('../page_object/signUpPage'),
     newUserPage = require('../page_object/newUserPage'),
+    detailsPage = require('../page_object/detailsPage'),
     pageObjectHelper = require('../helpers/pageObjectHelper')
 
 function NavigationHelper () {
@@ -10,6 +11,7 @@ function NavigationHelper () {
   this.HomePage = new homePage();
   this.LoginPage = new loginPage();
   this.SignupPage = new signUpPage();
+  this.DetailsPage = new detailsPage();
   this.NewUserPage = new newUserPage();  
   this.PageObjectHelper = new pageObjectHelper();
 }
@@ -28,7 +30,6 @@ function NavigationHelper () {
     var self = this;
     browser.get(this.HomePage.getUrl()).then(function(){
       var EC = protractor.ExpectedConditions;
-      // Waits for the element with id 'myInput' to contain the input 'foo'.
       browser.wait(EC.textToBePresentInElement(self.HomePage.getTitleElement(), self.HomePage.getTitle()), 5000);
     });
   }
@@ -37,7 +38,6 @@ function NavigationHelper () {
     var self = this;
     this.CommonHeaderElements.goToLoginPage().then(function(){
       var EC = protractor.ExpectedConditions;
-      // Waits for the element with id 'myInput' to contain the input 'foo'.
       browser.wait(EC.textToBePresentInElement(self.LoginPage.getTitleElement(), self.LoginPage.getTitle()));
     });
   };
@@ -46,8 +46,15 @@ function NavigationHelper () {
     var self = this;
     this.CommonHeaderElements.goToSignupPage().then(function(){
       var EC = protractor.ExpectedConditions;
-      // Waits for the element with id 'myInput' to contain the input 'foo'.
       browser.wait(EC.textToBePresentInElement(self.SignupPage.getTitleElement(), self.SignupPage.getTitle()));
+    });
+  };
+
+  NavigationHelper.prototype.goToDetailsPage = function(){
+    var self = this;
+    this.CommonHeaderElements.goToDetailsPage().then(function(){
+      var EC = protractor.ExpectedConditions;
+      browser.wait(EC.textToBePresentInElement(self.DetailsPage.getTitleContainer(), self.DetailsPage.getTitle()));
     });
   };
 

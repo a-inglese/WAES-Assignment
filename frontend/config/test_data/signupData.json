@@ -43,7 +43,16 @@
             "dayOfBirth": "22",
             "monthOfBirth": "September",
             "yearOfBirth": "2019"
-        }    
+        },
+        "admin": {
+            "username": "admin",
+            "password": "hero",
+            "name": "Amazing Admin",
+            "email": "a.admin@wearewaes.com",
+            "dayOfBirth": "08",
+            "monthOfBirth": "June",
+            "yearOfBirth": "1979"
+        }  
 }
 
 

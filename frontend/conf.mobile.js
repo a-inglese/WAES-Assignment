@@ -88,11 +88,18 @@ exports.config = {
 
   suites: {
     all: 'specs/*.js',
-    login: 'specs/loginSpec.js',
+    detail: 'specs/detailSpecs.js',
+    download: 'specs/fileDownloadSpec.js',
+    homePage: 'specs/HomePageSpec.js',
+    security: 'specs/SecuritySpec.js',
+    loginElements: 'specs/loginElementsSpec.js',
+    loginNegative: 'specs/loginSpecNegativeScenarios.js',
+    loginPositive: 'specs/loginSpecPositiveScenarios.js',
     logout: 'specs/logoutSpec.js',
-    signUpPositive: 'specs/signUpSpecPositiveScenarios.js',
+    profile: 'specs/profileSpecs.js',
+    signupElements: 'specs/signUpElementsSpec.js',
+    signUpPositive: 'specs/signUpspecPositiveScenarios.js',
     signUpNegative: 'specs/signUpSpecNegativeScenarios.js',
-    elements: 'specs/elementsSpec.js'
   },
 
   // ---------------------------------------------------------------------------
@@ -166,7 +173,7 @@ exports.config = {
 
         // if specific window size is required: use the following command line
         browser.driver.manage().window()
-        .setSize(ptorYml.browser.width, 800);
+        .setSize(700, 1024);
 
   },
 

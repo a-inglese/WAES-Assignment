@@ -6,9 +6,9 @@ var pageObjectHelper = require('../helpers/pageObjectHelper'),
     detailsPage = require('../page_object/detailsPage'),
     profilePage = require('../page_object/profilePage');
 
-    describe('Feature: As a user I want to check that all input fields are correctly defined', function() {
+    describe('Feature: As a user I want to check that all Login page elements & input fields are correctly defined', function() {
         
-        describe("Scenario: Check Login page features", function() {
+        describe("Scenario: Check Login page elements & input fields", function() {
             
             beforeAll(function () {   
                 // Ignores synchronization with angular for non-angular page,

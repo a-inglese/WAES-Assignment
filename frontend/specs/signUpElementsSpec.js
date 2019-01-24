@@ -2,27 +2,23 @@ var pageObjectHelper = require('../helpers/pageObjectHelper'),
     navigationHelper = require('../helpers/navigationHelper'),
     commheadel = require('../page_object/commonHeaderElements'),
     homePage = require('../page_object/homePage'),
-    signUpPage = require('../page_object/signUpPage'),
-    detailsPage = require('../page_object/detailsPage'),
-    profilePage = require('../page_object/profilePage'),
-    users = require('../config/test_data/userData.json','utf8');
+    signUpPage = require('../page_object/signUpPage');
 
-    describe('Feature: As a user I want to access the Log In Page', function() {
+    beforeAll(function () {   
+        // Ignores synchronization with angular for non-angular page,
+        isAngularSite(false);
+        this.HomePage = new homePage();
+        this.NavigationHelper = new navigationHelper();
+        this.PageObjectHelper = new pageObjectHelper();
+        this.CommonHeaderElements = new commheadel();
+        this.SignupPage = new signUpPage();
+        this.NavigationHelper.logoutIfLoggedIn(); 
+    });
+
+    describe('Feature: As a user I want to check that all Sign Up page elements & input fields are correctly defined', function() {
         
-        describe("Scenario: Check Login page features", function() {
+        describe("Check Sign Up page elements & input fields", function() {
             
-            beforeAll(function () {   
-                // Ignores synchronization with angular for non-angular page,
-                isAngularSite(false);
-                this.HomePage = new homePage();
-                this.NavigationHelper = new navigationHelper();
-                this.PageObjectHelper = new pageObjectHelper();
-                this.CommonHeaderElements = new commheadel();
-                this.SignupPage = new signUpPage();
-                this.ProfilePage = new profilePage();
-                this.DetailsPage = new detailsPage();
-                this.NavigationHelper.logoutIfLoggedIn(); 
-            });
 
             it("Given I am on the WAES Home page", function() {
                 browser.get(this.HomePage.getUrl());     
@@ -126,8 +122,6 @@ var pageObjectHelper = require('../helpers/pageObjectHelper'),
             it("Year input should be mandatory", function () {
                 this.PageObjectHelper.isFieldRequired(this.SignupPage.getYearInput());            
             });
-
-
         
         });
 

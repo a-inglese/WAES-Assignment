@@ -1,6 +1,5 @@
 var pageObjectHelper = require('../helpers/pageObjectHelper'),
     navigationHelper = require('../helpers/navigationHelper'),
-    pageDownloadHelper = require('../helpers/fileDownloaderHelper'),
     commheadel = require('../page_object/commonHeaderElements'),
     homePage = require('../page_object/homePage');
 
@@ -14,59 +13,45 @@ describe("Feature: As a User, I want to check the correct functionality of the H
         this.HomePage = new homePage();
         this.NavigationHelper = new navigationHelper();
         this.PageObjectHelper = new pageObjectHelper();
-        this.FileDownloadHelper = new pageDownloadHelper();
     });
 
-        describe('Scenario: Home Elements', function() {
+        describe('Scenario: Navigation to Home Page', function() {
 
 
-            it("Given I am on the Home Page", function () {
+            it("Given I open a web browser", function () {              
+            });
+
+            it("When I navigate to WAES Assignment homepage", function () {
                 this.NavigationHelper.goToHomePage();                
             });
 
-            it("Should have header displayed", function () {
+            it("Then I should have header displayed", function () {
                 expect(this.CommonHeaderElements.getHeader().isDisplayed()).toBe(true);
                 
             });
 
-            it("Should have link to Home Page", function () {
+            it("And I should have link to Home Page", function () {
                 expect(this.CommonHeaderElements.getHomeLink().isDisplayed()).toBe(true);
                 
             });
 
-            it("Should have link to Login Page", function () {
+            it("And I should have link to Login Page", function () {
                 expect(this.CommonHeaderElements.getLoginLink().isDisplayed()).toBe(true);
                 
             });
 
-            it("Should have link to Sign Up Page", function () {
+            it("And I should have link to Sign Up Page", function () {
                 expect(this.CommonHeaderElements.getSignupLink().isDisplayed()).toBe(true);
                 
             });
 
-            it("Should have Title", function () {
+            it("And I should have Title", function () {
                 expect(this.HomePage.getTitleElement().isDisplayed()).toBe(true);
             });
 
-            it("Title should be \"WAES Tester Assignment\"", function () {
+            it("And title should be \"WAES Tester Assignment\"", function () {
                 let titleDisplayed = this.PageObjectHelper.getElementText(this.HomePage.getTitleElement());
                 expect(titleDisplayed).toEqual(this.HomePage.getTitle());
-            });
-                        
-        });
-
-        describe('Scenario: File Download', function() {
-
-            it("Given I am on the Home Page", function () {
-                this.NavigationHelper.goToHomePage();                
-            });
-
-            it("When I click on the download link", function () {
-                this.HomePage.clickDownload();          
-            });
-
-            it("Then I should be able to download the PDF file", function () {
-                this.FileDownloadHelper.waitForDownload();              
             });
                         
         });

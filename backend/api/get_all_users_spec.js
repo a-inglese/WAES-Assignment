@@ -21,7 +21,7 @@ it ('Should return correct data for user Admin', function () {
 
 it('When a client app attempts to request all users without proper credentials', function() {});
 
-it ('Should return statos 401 UNAUTHORIZED', function () {
+it ('Should return status 401 UNAUTHORIZED', function () {
   return frisby
     .setup({
       request: {

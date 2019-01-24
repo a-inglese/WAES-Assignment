@@ -56,7 +56,16 @@ exports.config = {
 
   capabilities: {
     browserName: 'chrome',
-    chromeOptions: { args: [ "--headless", "--disable-gpu", "--window-size=800,600"] }
+    chromeOptions: {
+      prefs: {
+            'download': {
+            'directory_upgrade': true,
+            'prompt_for_download': false,
+            'default_directory': 'frontend/downloads/'
+            }
+        },
+      args: [ "--headless", "--disable-gpu", "--window-size=800,600"] 
+    }
   },
 
   // ---------------------------------------------------------------------------
@@ -79,10 +88,17 @@ exports.config = {
 
   suites: {
     all: 'specs/*.js',
-    login: 'specs/loginSpec.js',
+    detail: 'specs/detailSpecs.js',
+    homePage: 'specs/HomePageSpec.js',
+    security: 'specs/SecuritySpec.js',
+    loginElements: 'specs/loginElementsSpec.js',
+    loginNegative: 'specs/loginSpecNegativeScenarios.js',
+    loginPositive: 'specs/loginSpecPositiveScenarios.js',
     logout: 'specs/logoutSpec.js',
-    signup: 'specs/signUpSpec.js',
-    elements: 'specs/elementsSpec.js'
+    profile: 'specs/profileSpecs.js',
+    signupElements: 'specs/signUpElementsSpec.js',
+    signUpPositive: 'specs/signUpspecPositiveScenarios.js',
+    signUpNegative: 'specs/signUpSpecNegativeScenarios.js',
   },
 
   // ---------------------------------------------------------------------------
